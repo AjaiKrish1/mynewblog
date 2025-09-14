@@ -30,6 +30,11 @@ jobs:
         run: |
           gem install jekyll
 
+      - name: List blog sources
+        run: |
+          echo "Repo root: $(pwd)"
+          echo "Blog sources:" && ls -la blog && echo "Posts:" && ls -la blog/_posts
+
       - name: Copy root static site into _site
         run: |
           # Copy everything except the Jekyll source under blog/
@@ -49,7 +54,19 @@ jobs:
             BASEURL="/$REPO_NAME/blog"
           fi
           echo "Using baseurl=$BASEURL"
-          jekyll build --source blog --destination _site/blog --baseurl "$BASEURL"
+          cd blog
+          bundle init
+          bundle config set path '../vendor/bundle'
+          bundle add jekyll
+          bundle add webrick || true
+          bundle exec jekyll build --destination ../_site/blog --baseurl "$BASEURL" --trace
+          cd -
+
+      - name: Inspect built blog output
+        run: |
+          echo "Listing built blog files:" && find _site/blog -maxdepth 4 -type f | sort
+          echo "Posts count on index page (should find title):"
+          grep -n "Sample AI Blog Post" _site/blog/index.html || true
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
