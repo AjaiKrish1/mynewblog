@@ -28,7 +28,7 @@ jobs:
 
       - name: Install Jekyll
         run: |
-          gem install jekyll
+          gem install jekyll bundler
 
       - name: List blog sources
         run: |
@@ -45,7 +45,14 @@ jobs:
             --exclude '.github' \
             ./ _site/
 
+      - name: Install gems (blog)
+        working-directory: blog
+        run: |
+          bundle config set path '../vendor/bundle'
+          bundle install --jobs 4 --retry 3
+
       - name: Build blog (subdirectory)
+        working-directory: blog
         run: |
           REPO_NAME="${GITHUB_REPOSITORY#*/}"
           if [[ "$REPO_NAME" == *.github.io ]]; then
@@ -54,13 +61,7 @@ jobs:
             BASEURL="/$REPO_NAME/blog"
           fi
           echo "Using baseurl=$BASEURL"
-          cd blog
-          bundle init
-          bundle config set path '../vendor/bundle'
-          bundle add jekyll
-          bundle add webrick || true
           bundle exec jekyll build --destination ../_site/blog --baseurl "$BASEURL" --trace
-          cd -
 
       - name: Inspect built blog output
         run: |
