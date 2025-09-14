@@ -9,10 +9,10 @@
   <body>
     <header class="site-header">
       <div class="container">
-        <a class="brand" href="{{ '/blog/' | relative_url }}">{{ site.title }}</a>
+        <a class="brand" href="{{ site.baseurl }}/">{{ site.title }}</a>
         <nav class="nav">
-          <a href="{{ '/blog/' | relative_url }}">Blog</a>
-          <a href="/">Home</a>
+          <a href="{{ site.baseurl }}/">Blog</a>
+          <a href="{{ site.baseurl | replace: '/blog','' }}/">Home</a>
         </nav>
       </div>
     </header>
@@ -24,4 +24,3 @@
     </footer>
   </body>
   </html>
-

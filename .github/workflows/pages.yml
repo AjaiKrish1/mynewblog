@@ -30,13 +30,26 @@ jobs:
         run: |
           gem install jekyll
 
-      - name: Build blog (subdirectory)
-        run: |
-          jekyll build --source blog --destination _site/blog --baseurl /blog
-
       - name: Copy root static site into _site
         run: |
-          rsync -av --delete --exclude '.git' --exclude '_site' --exclude 'blog/_site' --exclude '.github' ./ _site/
+          # Copy everything except the Jekyll source under blog/
+          rsync -av --delete \
+            --exclude '.git' \
+            --exclude '_site' \
+            --exclude 'blog/' \
+            --exclude '.github' \
+            ./ _site/
+
+      - name: Build blog (subdirectory)
+        run: |
+          REPO_NAME="${GITHUB_REPOSITORY#*/}"
+          if [[ "$REPO_NAME" == *.github.io ]]; then
+            BASEURL="/blog"
+          else
+            BASEURL="/$REPO_NAME/blog"
+          fi
+          echo "Using baseurl=$BASEURL"
+          jekyll build --source blog --destination _site/blog --baseurl "$BASEURL"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
@@ -53,4 +66,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
