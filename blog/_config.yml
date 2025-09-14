@@ -1,0 +1,9 @@
+title: "Ajai Blog"
+description: "Essays on engineering, simulation, and AI."
+baseurl: "/blog"  # the subpath of your site
+url: ""           # set this to your Pages URL later, e.g., https://<user>.github.io
+permalink: "/:year/:month/:day/:slug/"
+markdown: kramdown
+theme: null
+plugins: []
+

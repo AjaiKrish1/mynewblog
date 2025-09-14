@@ -1,0 +1,20 @@
+---
+layout: default
+title: "Blog"
+---
+
+<h1>Blog</h1>
+<p>Latest posts</p>
+
+<ul class="posts">
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <span class="meta">— {{ post.date | date: '%Y-%m-%d' }}</span>
+    </li>
+  {% endfor %}
+  {% if site.posts == empty %}
+    <li>No posts yet.</li>
+  {% endif %}
+</ul>
+

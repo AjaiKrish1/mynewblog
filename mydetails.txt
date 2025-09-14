@@ -1,0 +1,68 @@
+ title: "Ajaikrishna Ramalingam"
+  meta_description: "Ajai"
+  brand: 
+    name: "No brand"
+    tagline: "No brand"
+  hero:
+    name: "Ajai"
+    bio: "I am a doctoral researcher"
+    image: { src: "\home\ajai\myblog\photo.jpeg", alt: "", caption: "nocaption" }
+    buttons:
+      writing: { label: "Read the Writing", href: "#writing" }
+      research: { label: "See Research", href: "#research" }
+      projects: { label: "View Projects", href: "#projects" }
+  header_cta: { label: "Newsletter", href: "" }
+  about:
+    heading: "About + Now"
+    paragraph: "I am a mechanical/materials Engineer"
+    currently: { role: "Docotral Researcher", org: "RWTH Aachen University" }
+    focus: ["Computational modelling of dual-phase process chain", "deep learning", "digital twins"]
+    location: "Aachen, Germany"
+    quick_links: [ { label: "", href: "" } ]
+  writing:
+    heading: "Writing & Newsletter"
+    description: ""
+    posts:
+      - { title: "", date: "", category: "", summary: "", image: { src: "", alt: "" }, url: "" }
+      - { title: "", date: "", category: "", summary: "", image: { src: "", alt: "" }, url: "" }
+    browse_all: { label: "", href: "" }
+    subscribe_button: { label: "", href: "" }
+    newsletter_embed_html: ""
+  research:
+    heading: "Research & Publications"
+    description: ""
+    publications:
+      - { title: "", venue: "", year: "", snippet: "", tags: ["",""], links: { pdf: "", code: "", project: "" } }
+    book: { title: "", description: "", href: "" }
+  projects:
+    heading: "Projects"
+    description: ""
+    items:
+      - { name: "", summary: "", image: { src: "", alt: "" }, href: "" }
+  media:
+    heading: "Media: Podcasts & Talks"
+    podcasts: [ { title: "", outlet: "", date: "", href: "" } ]
+    talks: [ { title: "", event: "", year: "", slides: "", video: "" } ]
+  guides:
+    heading: "Guides & Resources"
+    items: [ { title: "", summary: "", href: "" } ]
+  cv:
+    heading: "CV / Resume"
+    blurb: ""
+    download: { label: "", href: "" }
+    preview_image: { src: "", alt: "" }
+  contact:
+    heading: "Contact"
+    intro: ""
+    email: "ajaikrishna.ramalingam@ibf.rwth-aachen.de"
+    socials: [ { label: "x", href: "https://x.com/AjaikrishnaR", label: "linkedin", href: "https://www.linkedin.com/in/ajaikrishna987/" } ]
+    office_hours: ""
+    form: { service: "", action: "", method: "POST", fields: ["name","email","message"] }
+  footer:
+    text: "© 2025 Your Name"
+  design:
+    accent: "#2563eb"
+  extras:
+    favicon: ""
+    og_image: ""
+    remove_sections: []
